@@ -89,7 +89,7 @@ public class NaorReingoldPRF extends PRF {
      *              <br>The g parameter should not be null, should be smaller than p, should at least have a value of 1
      *              and should be of multiplicative order q (== g^q mod p = 1).
      */
-    protected NaorReingoldPRF(BigInteger initialKey, BigInteger[] a0, BigInteger[] a1, BigInteger p, BigInteger q, BigInteger g) {
+    public NaorReingoldPRF(BigInteger initialKey, BigInteger[] a0, BigInteger[] a1, BigInteger p, BigInteger q, BigInteger g) {
         super(a0);
 
         this.initialKey = initialKey;
