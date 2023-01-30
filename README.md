@@ -13,6 +13,12 @@ We use <a href="https://github.com/pvriel/PRF4J/packages/">GitHub packages</a>.
 
 ***
 
+## Implemented PRF protocols
+
+Currently, only the <a href="https://en.wikipedia.org/wiki/Naor–Reingold_pseudorandom_function">Naor-Reingold PRF</a> is implemented.
+
+***
+
 ## Basic usage example
 
 Using this library is straight-forward; check the test classes.
