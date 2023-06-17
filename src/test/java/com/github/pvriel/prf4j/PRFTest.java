@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigInteger;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class PRFTest {
 
