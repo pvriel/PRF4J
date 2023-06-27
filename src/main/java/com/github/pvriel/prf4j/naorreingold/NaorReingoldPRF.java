@@ -3,6 +3,7 @@ package com.github.pvriel.prf4j.naorreingold;
 import com.github.pvriel.prf4j.PRF;
 
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 
 /**
  * Class representing <a href="https://dl.acm.org/doi/10.1145/972639.972643">Naor-Reingold PRF functions</a>.
@@ -101,7 +102,13 @@ public class NaorReingoldPRF extends PRF {
 
 
     @Override
-    protected BigInteger compute(BigInteger[] a0, BigInteger element) {
+    protected BigInteger[] compute(BigInteger[] a0, BigInteger[] elements) {
+        BigInteger[] result = new BigInteger[elements.length];
+        IntStream.range(0, elements.length).parallel().forEach(i -> result[i] = compute(a0, elements[i]));
+        return result;
+    }
+
+    private BigInteger compute(BigInteger[] a0, BigInteger element) {
         BigInteger exponent = initialKey;
         for (int i = 0; i < a0.length; i ++) {
             if (element.testBit(i)) exponent = exponent.multiply(a0[i]);

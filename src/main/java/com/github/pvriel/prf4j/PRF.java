@@ -1,7 +1,6 @@
 package com.github.pvriel.prf4j;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 /**
  * Abstract class representing PRF functions.
@@ -31,16 +30,27 @@ public abstract class PRF {
      * @return  The result of the computation as a not-null {@link BigInteger}.
      */
     public BigInteger compute(BigInteger element) {
-        return compute(key, element);
+        return compute(key, new BigInteger[]{element})[0];
     }
 
     /**
-     * Method to apply the PRF function with the given key on the given element.
+     * Method to apply the PRF function on a given array of elements.
+     * @param   elements
+     *          The elements as a not-null array of not-null {@link BigInteger}s.
+     * @return  The result of the computations as a not-null array of not-null {@link BigInteger}s.
+     */
+    public BigInteger[] compute(BigInteger[] elements) {
+        return compute(key, elements);
+    }
+
+
+    /**
+     * Method to apply the PRF function with the given key on the given elements.
      * @param   key
      *          A not-null array of not-null {@link BigInteger}s, representing the key.
-     * @param   element
-     *          The element as a not-null {@link BigInteger}.
-     * @return  The result of the computation as a not-null @{@link BigInteger}.
+     * @param   elements
+     *          The elements as a not-null {@link BigInteger}.
+     * @return  The result of the computations are not-null @{@link BigInteger}s.
      */
-    protected abstract BigInteger compute(BigInteger[] key, BigInteger element);
+    protected abstract BigInteger[] compute(BigInteger[] key, BigInteger[] elements);
 }
